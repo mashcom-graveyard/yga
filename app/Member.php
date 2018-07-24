@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Member extends Model
 {
+   
     function member_designation(){
         return $this->hasOne('App\Designation','id','designation');
     }
@@ -17,4 +18,5 @@ class Member extends Model
     function member_sport(){
         return $this->hasOne('App\Sport','id','sport');
     }
+
 }

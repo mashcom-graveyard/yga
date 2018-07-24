@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
     <style>
-        @import url('https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz');
+        @import url('https://fonts.googleapis.com/css?family=Exo+2:400,700');
+        @import url('https://fonts.googleapis.com/css?family=Nunito');
 
         @font-face {
             font-family: Eina;
@@ -48,7 +49,7 @@
         }
 
         body {
-            font-family: "eina", "segoe ui", "helvetica" !important;
+            font-family: "Exo 2", "nunito", " eina ", " segoe ui ", " helvetica " !important;
 
         }
 
@@ -67,7 +68,37 @@
                 height: 600px;
                 color: #444;
                 width: 800px;
+                padding: 6px;
 
+            }
+
+            #backcover {
+                background-image: url('{{asset('bg_front.jpg')}}') !important;
+                margin-top: 0;
+                color: #fff !important;
+
+            }
+
+            #backcover * {
+                color: #fff !important;
+            }
+
+            .access-label {
+                background: #17a2b8 !important;
+                color: #fff !important;
+                font-weight: bold !important;
+                border: none !important;
+                font-size: 20px;
+            }
+
+            .page-break {
+                overflow: hidden;
+                page-break-after: always;
+            }
+
+            .red-bg {
+                background: #e40203 !important;
+                color: #fff !important;
             }
         }
 
@@ -75,95 +106,195 @@
     </style>
 </head>
 <body>
-<div class="col-lg-4 col-lg-offset-2 id-card">
+
+<?php $index = 0; ?>
+@foreach($members as $member)
+
+    <div <?php if ($index % 2) {
+        echo "class='page-break'";
+    } ?>>
+        <table>
+            <tr>
+                <td width="45%">
+                    <table width="100%" id="font-cover">
+                        <tr>
+                            <td class="col-lg-3" style="overflow: hidden">
+                                <img src="{{ asset('logo.jpg') }}" alt="" style="width: 90px;">
+                            </td>
+                            <td class="col-lg-6 text-center">
+                                <h5>Zimbabwe National Youth and Paralympic Games Midlands</h5>
+                                <h5>15-28 August 2018</h5>
+                            </td>
+                            <td class="col-lg-3" style="overflow: hidden">
+                                <img src="{{ asset('download.jpg') }}" alt="" style="width: 90px;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="100%">
+                        <tr class="red-bg">
+                            <td class="row red-bg">
+                                <h3 class="text-center text-uppercase red-bg">{{ $member->member_designation->name }}</h3>
+                            </td>
+                        </tr>
+                    </table>
+                    <table width="100%">
+                        <tr>
+                            <td class="col-lg-4" style="overflow: hidden">
+
+                                @if(!empty($member->image))
+                                    <img src="{{ asset('/images/'.$member->image) }}" alt=""
+                                         style="width:200px;height: auto">
+                                @else
+                                    <img src="{{ asset('/no-image.jpg') }}" alt=""
+                                         style="width:200px;height: auto">
+                                @endif
+
+                                <br/>
+                                <h3>{{ $member->firstname." ".$member->surname }}</h3>
+                                <?php
+
+                                $member_json_data = json_encode(["id" => $member->id]);
+                                QRCode::text($member_json_data)->svg();
+                                ?>
+
+                            </td>
+                            <td class="col-lg-6">
 
 
-    <div class="col-lg-3" style="overflow: hidden">
-        <img src="{{ asset('logo.jpg') }}" alt="" style="width: 90px;">
+                                <h5>Name: {{ $member->firstname." ".$member->surname }}</h5>
+
+                                @if ($member->member_designation->name == "Athlete")
+                                    <h5>DOB: {{ date_format(date_create_from_format('Y-m-d', $member->dob ), 'd-m-Y')}}</h5>
+                                @endif
+
+                                <h5>ID No: {{ $member->national_id }}</h5>
+
+
+                                <h5>Sex: {{ $member->gender }}</h5>
+
+                                @if ($member->member_designation->name == "Athlete")
+
+                                    <h5>Sport: {{ $member->member_sport->name }}</h5>
+
+
+
+                                @endif
+
+
+                                <?php
+
+                                $codes = explode(',', $member->member_designation->zone_access);
+                                $access_zones = $codes;
+                                ?>
+                                <h3>ZONE ACCESS</h3>
+
+                                <h4>
+                                    @foreach($access_zones as $access_zone)
+                                        <label class="label label-success access-label">{{ $access_zone}}</label>
+                                    @endforeach
+                                </h4>
+
+
+                            </td>
+                        </tr>
+
+
+                    </table>
+                    <table width="100%">
+                        <tr>
+
+                            <td class="col-lg-12 text-center text-italic">
+                                <h6>Enhancing peace, love, unity, Podium Perfomance and Economic Development through
+                                    sport</h6>
+                                <br/><br/>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+                <td width="45%"
+                    style="background-image: url('{{asset('card_bg.jpg')}}') !important;padding: 6px !important;color: #fff !important;"
+                    id="backcover">
+                    <table width="100%">
+                        <tr>
+                            <td class="col-lg-3" style="overflow: hidden">
+                                <img src="{{ asset('SRC-LATEST.jpg') }}" alt="" style="width: 90px;">
+                            </td>
+                            <td class="col-lg-6 text-center">
+                                <h6>Zimbabwe National Youth and Paralympic Games Midlands</h6>
+                                <h6>15-28 August 2018</h6>
+                            </td>
+                            <td class="col-lg-3" style="overflow: hidden">
+                                <img src="{{ asset('ZNYG logo.PNG') }}" alt="" style="width: 90px;">
+                            </td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td width="100%"><br/></td>
+                        </tr>
+                        <tr>
+                            <td width="100%"><br/></td>
+                        </tr>
+                        <tr>
+                            <td width="100%" class="col-lg-10 col-lg-offset-1"><h3>EMERGENCY NUMBERS</h3></td>
+                        </tr>
+                        <tr>
+                            <td width="45%" class="col-lg-10 col-lg-offset-1">Command Center</td>
+                            <td width="45%">Fire and Ambulance</td>
+                        </tr>
+                        <tr>
+                            <td width="45%" class="col-lg-10 col-lg-offset-1">ZRP</td>
+                        </tr>
+
+                        <tr>
+                            <td width="100%"><br/></td>
+                        </tr>
+                        <tr>
+                            <td width="45%" class="col-lg-10 col-lg-offset-1"><h3>ZONE CODES</h3></td>
+                        </tr>
+                        @foreach($designation_zones as $dzone)
+                            <tr>
+
+                                <td width="100%" class="col-lg-10 col-lg-offset-1">ZONE ACCESS {{$dzone->id}}
+                                    : {{strtoupper($dzone->name)}}</td>
+                            </tr>
+                        @endforeach
+                    </table>
+                    <table width="100%">
+                        <tr>
+                            <td class="col-lg-4" style="overflow: hidden">
+
+                                <br/><?php
+
+                                $member_json_data = json_encode(["id" => $member->id]);
+                                QRCode::text($member_json_data)->svg();
+                                ?>
+
+                            </td>
+                            <td class="col-lg-6">
+
+
+                            </td>
+                        </tr>
+
+
+                    </table>
+                    <table width="100%">
+                        <tr>
+
+                            <td class="col-lg-12 text-center text-italic">
+                                <h6>Enhancing peace, love, unity, Podium Perfomance and Economic Development through
+                                    sport</h6>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <hr/>
     </div>
-    <div class="col-lg-6 text-center">
-        <h5>Enhancing peace, love, unity, Podium Perfomance and Economic Development through sport</h5>
-    </div>
-    <div class="col-lg-3" style="overflow: hidden">
-        <img src="{{ asset('download.jpg') }}" alt="" style="width: 90px;">
-    </div>
-
-    <div class="row col-lg-12">
-        <h3 class="text-center text-uppercase">{{ $member->member_designation->name }}</h3>
-    </div>
-    <div class="col-lg-4" style="overflow: hidden">
-        <img src="{{ asset('/images/'.$member->image) }}" alt="" style="max-width: 100%;">
-    </div>
-
-    <div class="col-lg-8">
-
-        <b>
-            <h5>Name: {{ $member->firstname." ".$member->surname }}</h5>
-            <h5>DOB: {{ $member->dob }}</h5>
-            <h5>ID No: {{ $member->national_id }}</h5>
-            <h5>Sex: {{ $member->gender }}</h5>
-        </b>
-
-        @if ($member->member_designation->name == "Athlete")
-            <h4>Sport: {{ $member->member_sport->name }}</h4>
-
-        @endif
-
-
-        <?php
-        $catering_code = "C1";
-        if ($member->member_designation->name == "VIP") {
-            $catering_code = "C2";
-        }
-        $transport_code = "T1 T2 T3";
-        if ($member->member_designation->name == "Athlete") {
-            $transport_code = "T1 T2";
-        }
-        ?>
-        <h3>CATERING</h3>
-        <h4>{{ $catering_code }}</h4>
-        <h3>TRANSPORT</h3>
-        <h4>{{ $transport_code }}</h4>
-        <?php
-
-        $member_json_data = json_encode(["id" => $member->id]);
-        QRCode::text($member_json_data)->svg();
-        ?>
-        </b>
-    </div>
-</div>
-
-<div class="col-lg-4 id-card">
-
-
-    <div class="col-lg-3" style="overflow: hidden">
-        <img src="{{ asset('logo.jpg') }}" alt="" style="width: 90px;">
-    </div>
-    <div class="col-lg-6 text-center">
-        <h5>Enhancing peace, love, unity, Podium Perfomance and Economic Development through sport</h5>
-    </div>
-    <div class="col-lg-3" style="overflow: hidden">
-        <img src="{{ asset('download.jpg') }}" alt="" style="width: 90px;">
-    </div>
-
-
-    <div class="col-lg-12">
-        <br/><br/>
-        <ul>
-            <li>This Accreditation Pass is personal, non-transfereable, must be displayed at all times while in the area
-                requiring accreditation and is valid only in the areas indicated on this card
-            </li>
-
-        </ul>
-
-        <?php
-
-        $member_json_data = json_encode(["id" => $member->id]);
-        QRCode::text($member_json_data)->svg();
-        ?>
-        </b>
-    </div>
-</div>
+    <?php $index++ ?>
+@endforeach
 
 </body>
 </html>

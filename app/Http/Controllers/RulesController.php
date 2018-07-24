@@ -119,6 +119,10 @@ class RulesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $rule = Rule::whereId($id)->first();
+        if($rule->delete()){
+            return back()->with('success','Record deleted successfully');
+        }
+        return back()->withErrors(['Record failed to delete']);
     }
 }

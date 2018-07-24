@@ -31,7 +31,10 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
     Route::resource('/category', 'CategoryController')->middleware('admin_only');
     Route::resource('/sport', 'SportsController')->middleware('admin_only');
     Route::resource('/province', 'ProvincesController')->middleware('admin_only');
+
     Route::resource('/designation', 'DesignationsController')->middleware('admin_only');
+    Route::post('/designation/zone/update','DesignationsController@zoneUpdate')->middleware('admin_only');
+
     Route::resource('/venue', 'VenueController')->middleware('admin_only');
     Route::get('/venue/{id}/rules', 'VenueController@rules')->middleware('admin_only');
     Route::post('/venue/{id}/rules', 'VenueController@saveRules')->middleware('admin_only');
@@ -39,13 +42,13 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
     Route::resource('/rules', 'RulesController')->middleware('admin_only');
     Route::post('/rules', 'HomeController@saveRules')->middleware('admin_only');
 
+    Route::resource('/zone', 'ZonesController')->middleware('admin_only');
+
     Route::post('/section/update', 'HomeController@update')->middleware('admin_only');
 
     Route::get('rules/settings/transport', 'RulesController@settings');
 
     //Route::get('/home', 'HomeController@index')->name('home');
-
-    Route::get('/generate/pass/{id}', 'MemberController@generatePass');
 
 
     Route::resource('/users', 'UserController');//->middleware(['admin_only','general_manager']);
@@ -56,14 +59,27 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
     });
     Route::post('/security/password','UserController@changePassword')->name('change.password');
 
-    Route::get('/pdf',function(){
-        $pdf = App::make('snappy.pdf.wrapper');
-        $pdf->loadHTML('<h1>Test</h1>');
-        return $pdf->inline();
+    Route::get('/pdf/{id}',function($id){
+        return PDF::loadFile('https://youthgames.changamire.com/generate/pass/'.$id)
+            ->setPaper('a4')
+            ->setOption('margin-bottom', 0)
+            ->inline('card.pdf');
     });
+
+    Route::get('/print/cards/{province}/{sport}',function ($province,$sport){
+        return PDF::loadFile("https://youthgames.changamire.com//province_sports_cards/$province/$sport")
+            ->setPaper('a4')
+            ->setOption('margin-bottom', 0)
+            ->inline('card.pdf');
+
+    });
+    Route::get('report','ReportsController@master');
 
 
 });
+
+Route::get('/generate/pass/{id}', 'MemberController@generatePass');
+Route::get('/province_sports_cards/{province}/{sport}','MemberController@generateProvinceSportCards');
 
 
 Route::any('/deactivated', function () {

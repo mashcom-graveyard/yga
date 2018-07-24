@@ -10,6 +10,7 @@ use App\Province;
 use App\Venue;
 use App\Rule;
 use App\Category;
+use App\Zone;
 use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
@@ -88,6 +89,10 @@ class HomeController extends Controller
             case "venue":
                 $validate = "venues";
                 $TargetModel = Venue::find($request->id);
+                break;
+            case "zone":
+                $validate = "zones";
+                $TargetModel = Zone::find($request->id);
                 break;
         }
         $request->validate([

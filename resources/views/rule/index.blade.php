@@ -47,7 +47,7 @@
                     <td>{{ App\Venue::find(json_decode($sport->male)->village)->name }}</td>
                     <td rowspan="2">
                         <a href="{{ url('/rules/'.$sport->id.'/edit') }}" class="btn btn-primary btn-xs"><b>Edit</b></a>
-                        
+                        <button onclick="deleteDialog(<?php echo $sport->id ?>,'rules','<?php echo App\Sport::find($sport->sport_id)->name."-".App\Category::find($sport->category)->name ?>')" class="btn btn-danger btn-xs btn-inline">Delete</button>
                     </td>
 
                 </tr>

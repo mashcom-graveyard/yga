@@ -8,8 +8,10 @@
         <div class="row col-lg-12">
             <h2 class="mb-3 text-center"></h2>
         </div>
-
-        <div class="col-md-10">
+        <div class="col-lg-2">
+            <img id="blah" src="{{ asset("images/$member->image") }}" alt="member image" style="width: 100%" />
+        </div>
+        <div class="col-md-10 well">
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -25,7 +27,7 @@
                     {{  session('success') }}
                 </div>
             @endif
-            <form class="needs-validation" method="post" action='{{ url("member/update/$member->id") }}'>
+            <form class="needs-validation form-horizontal" method="post" action='{{ url("member/update/$member->id") }}' enctype="multipart/form-data">
 
                 {{ csrf_field()  }}
 
@@ -62,6 +64,12 @@
                         <input class="form-control" name="surname" placeholder="Surname"
                                value="{{ $member->surname }}" required=""
                                type="text">
+
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <br/>
+                        <label for="firstName">Select ID Photo</label>
+                        <input type="file" src="" alt="" name="image" onchange="readURL(this);">
 
                     </div>
                 </div>
@@ -102,7 +110,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="firstName">Telephone</label>
                             <input class="form-control" name="telephone"
-                                   value="{{ $member->telephone }}" required=""
+                                   value="{{ $member->telephone }}"
                                    type="text">
 
                         </div>
@@ -170,14 +178,7 @@
                         </select>
 
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <br/>
-                        <label for="firstName">Theme</label>
-                        <input class="form-control" name="theme"
-                               value="{{ $member->theme }}" required=""
-                               type="text">
 
-                    </div>
                 </div>
 
                 <div class="row">

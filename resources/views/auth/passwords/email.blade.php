@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <center><img src="{{asset('SRC-LATEST.jpg')}}" width="150px"></center>
             <div class="card">
                 <div class="card-header">{{ __('Reset Password') }}</div>
 

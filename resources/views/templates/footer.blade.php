@@ -47,6 +47,56 @@
 </div>
 
 
+
+<div id="deleteModal" class="modal fade">
+
+    <div class="modal-dialog modal-danger">
+
+        <div class="modal-content">
+
+            <div class="modal-header ">
+
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+                <h4 class="modal-title"><b>Confirmation Delete Action</b></h4>
+
+            </div>
+
+            <div class="modal-body">
+
+                <form method="post" action="#">
+
+                    <div class="form-group">
+
+                        {{ csrf_field() }}
+
+                        <input type="hidden" name="id" id="m_update_id" value="">
+                        <input type="hidden" name="section" id="m_update_section" value="">
+                        <input type="hidden" name="_method" value="DELETE">
+                        <label for="">Record to be deleted</label>
+                        <input type="text" name="current_name" id="m_update_current_value" value="" readonly
+                               class="form-control">
+
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Delete Record" class="btn btn-md btn-danger">
+
+                    </div>
+
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
 <br/>
 <br/>
 <br/><br/><br/>
@@ -65,8 +115,8 @@
             @if(\Illuminate\Support\Facades\Auth::user()->access_level ==3)
                 - {{ \Illuminate\Support\Facades\Auth::user()->user_province->name }} Province General Manager
             @endif
-        </b>- 
-   <b>Youth Games Accreditation System v1.0 &copy; {{ date('Y') }}. All Rights
+        </b>-
+        <b>Youth Games Accreditation System v1.0 &copy; {{ date('Y') }}. All Rights
             Reserved.</b></h6>
 
 </footer>
@@ -89,6 +139,53 @@
         $("#update_section").val(section_type);
         $("#update_current_value").val(current_value);
         $("#myModal").modal('show');
+    }
+
+    function updateAccessZones(id, section_type, current_value) {
+
+        $("#z_update_id").val(id);
+        $("#z_update_section").val(section_type);
+        $("#z_update_current_value").val(current_value);
+        $("#zonesModal").modal('show');
+    }
+
+    function deleteDialog(id, section_type, current_value) {
+        $("#m_update_id").val(id);
+        $("#m_update_section").val(section_type);
+        $("#m_update_current_value").val(current_value);
+
+        var url = null;
+
+        if (section_type == 'members') {
+            url = "member";
+        }
+        else if (section_type == "rules") {
+            url = "rules";
+        } else {
+            alert('action could not be determined');
+            return;
+        }
+        $("#deleteModal form").attr('action', 'https://youthgames.changamire.com/' + url + '/' + id);
+        $("#deleteModal").modal('show');
+    }
+
+    function captureDialog() {
+        $("#captureModal").modal('show');
+    }
+
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width('100%')
+                    .height('auto');
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
     }
 
 </script>

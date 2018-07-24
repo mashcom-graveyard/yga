@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Designation;
+use App\Zone;
 
 class DesignationsController extends Controller
 {
@@ -15,8 +16,9 @@ class DesignationsController extends Controller
     public function index()
     {
         $designations = Designation::with('designation_members')->get();
+        $zones = Zone::all();
 
-        return view('designation.index', ['designations' => $designations]);
+        return view('designation.index', ['designations' => $designations, 'zones' => $zones]);
     }
 
     /**
@@ -26,13 +28,31 @@ class DesignationsController extends Controller
      */
     public function create()
     {
-        
+
+    }
+
+    public function zoneUpdate(Request $request)
+    {
+
+        $designation = Designation::find($request->id);
+        if (isset($request->zone)) {
+            $designation->zone_access = implode($request->zone, ",");
+        } else {
+            $designation->zone_access = '';
+        }
+
+
+        if ($designation->save()) {
+            return back()->with('success', 'Designation Access Zone Successfully');
+
+        }
+        return back()->withErrors(['Error capturing access zone details']);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -53,7 +73,7 @@ class DesignationsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -64,7 +84,7 @@ class DesignationsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -75,8 +95,8 @@ class DesignationsController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -87,7 +107,7 @@ class DesignationsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

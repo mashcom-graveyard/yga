@@ -4,29 +4,42 @@
 <div class="containefr">
     <h2 class="text-center"><b>Registered People</b></h2>
     <br/>
-    @if(session('success'))
-        <div class="alert alert-success">
-            {{ session('success') }}
-        </div>
-    @endif
+
 
     <div class="row col-lg-10 col-lg-offset-1">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
         <div class="col-lg-12">
             <center>
-            <div class="col-lg-6">
-                <form method="get">
-                    <div class="input-group input-group-sm">
-                        <input name="q" class="form-control pull-right" placeholder="Search" type="text">
+                <div class="col-lg-6">
+                    <form method="get">
+                        <div class="input-group input-group-sm">
+                            <input name="q" class="form-control pull-right" placeholder="Search" type="text">
 
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search</button>
+                            <div class="input-group-btn">
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i>Search
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </div></center>
+                    </form>
+                </div>
+            </center>
+        </div>
 
         <br/> <br/> <br/> <br/> <br/>
+
 
 
         <div class="row justify-content-center">
@@ -55,16 +68,22 @@
                         <td>{{ $member->dob }}</td>
                         <td><b>{{ $member->national_id }}</b></td>
                         <td>{{ $member->gender }}</td>
-                      <!--  <td>// $member->email </td>-->
+                        <!--  <td>// $member->email </td>-->
                         <td>{{ $member->mobile }}</td>
-                       <!-- <td> $member->telephone </td>-->
+                        <!-- <td> $member->telephone </td>-->
                         <td>{{ $member->member_province->name }}</td>
                         <td>{{ $member->member_sport->name }}</td>
                         <td>{{ $member->member_designation->name }}</td>
-                        <td><a href="{{ url('/member/'.$member->id)  }}"
-                               class="btn btn-xs btn-primary">View</a></td>
-                        <td><a href="{{ url('/generate/pass/'.$member->id)  }}"
-                               class="btn btn-xs btn-primary">View Pass</a></td>
+                        <td>
+
+                            <a href="{{ url('/member/'.$member->id)  }}"
+                               class="btn btn-xs btn-primary btn-inline">View</a>
+                        </td>
+                        <td>
+                            <button onclick="deleteDialog(<?php echo $member->id ?>,'members','<?php echo $member->firstname ." ".$member->surname ?>')" class="btn btn-danger btn-xs btn-inline">Delete</button>
+                        </td>
+                        <td><a href="{{ url('/pdf/'.$member->id)  }}"
+                               class="btn btn-xs btn-primary">Print Card</a></td>
 
 
                     </tr>
