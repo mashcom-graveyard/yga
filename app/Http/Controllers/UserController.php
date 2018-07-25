@@ -89,7 +89,7 @@ class UserController extends Controller
         $user = User::find(Auth::user()->id);
         $user->password = Hash::make($request->password);
         if($user->save()){
-            return back()->with('success','Password Updated successfully');
+            return redirect('/dashboard')->with('success','Password Updated successfully');
         }
         return back()->withErrors(['Password failed to update']);
     }

@@ -54,10 +54,7 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
     Route::resource('/users', 'UserController');//->middleware(['admin_only','general_manager']);
     Route::get('/users/toggle_status/{id}', 'UserController@toggleStatus')->middleware('admin_only');
 
-    Route::get('/security/password',function(){
-        return view('auth.passwords.reset');
-    });
-    Route::post('/security/password','UserController@changePassword')->name('change.password');
+
 
     Route::get('/pdf/{id}',function($id){
         return PDF::loadFile('https://youthgames.changamire.com/generate/pass/'.$id)
@@ -72,11 +69,17 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
             ->setOption('margin-bottom', 0)
             ->inline('card.pdf');
 
+
     });
     Route::get('report','ReportsController@master');
 
 
 });
+
+Route::get('/security/password',function(){
+    return view('auth.passwords.reset');
+})->middleware('auth');
+Route::post('/security/password','UserController@changePassword')->name('change.password')->middleware('auth');
 
 Route::get('/generate/pass/{id}', 'MemberController@generatePass');
 Route::get('/province_sports_cards/{province}/{sport}','MemberController@generateProvinceSportCards');
@@ -108,6 +111,12 @@ Route::get('/api/dump/villages', function () {
 Route::get('/api/dump/rules', function () {
     if (isset($_GET['youth7613'])) {
         return App\Rule::all()->toJson();
+    }
+});
+
+Route::get('/api/dump/zones', function () {
+    if (isset($_GET['youth7613'])) {
+        return App\Zone::all()->toJson();
     }
 });
 

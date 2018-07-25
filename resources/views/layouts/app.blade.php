@@ -18,6 +18,41 @@
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 </head>
+<style>
+    @font-face {
+        font-family: Eina;
+        src: url({{asset('fonts/eina/eina-03-bold.woff2')}}) format("woff2"),
+        url({{asset('fonts/eina/eina-03-bold.woff')}}) format("woff"),
+        url({{asset('fonts/eina/eina-03-bold.ttf')}}) format("ttf"),
+        url({{asset('fonts/eina/eina-03-boldd41d.eot?#iefix')}}) format("eot");
+        font-weight: 700;
+        unicode-range: U+000-5FF
+    }
+
+    @font-face {
+        font-family: Eina;
+        src: url({{asset('fonts/eina/eina-03-semibold.woff2')}}) format("woff2"),
+        url({{asset('fonts/eina/eina-03-semibold.woff')}}) format("woff"),
+        url({{asset('fonts/eina/eina-03-semibold.ttf')}}) format("ttf"),
+        url({{asset('fonts/eina/eina-03-semiboldd41d.eot?#iefix')}}) format("eot");
+        font-weight: 600;
+        unicode-range: U+000-5FF
+    }
+
+    @font-face {
+        font-family: Eina;
+        src: url({{asset('fonts/eina/eina-03-regular.woff2')}}) format("woff2"),
+        url({{asset('fonts/eina/eina-03-regular.woff')}}) format("woff"),
+        url({{asset('fonts/eina/eina-03-regular.ttf')}}) format("ttf"),
+        url({{asset('fonts/eina/eina-03-regulard41d.eot?#iefix')}}) format("eot");
+        font-weight: 400;
+        unicode-range: U+000-5FF
+    }
+
+    body {
+        font-family: "eina", "segoe ui", "helvetica" !important;
+    }
+</style>
 <body>
 <div id="app">
     <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
