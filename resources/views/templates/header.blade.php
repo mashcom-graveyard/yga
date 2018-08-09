@@ -107,6 +107,7 @@
                 @if(\Illuminate\Support\Facades\Auth::user()->access_level==3)
                     <li><a href="{{ url('users') }}">Users</a></li>
                 @endif
+                <li><a href="https://drive.google.com/file/d/1IEB8LVSmvGWmjDe1ZDJcVCLooXDgMM5t/view?usp=sharing" target="_blank">User Manual</a></li>
 
 
             </ul>

@@ -36,9 +36,15 @@
                         <div class="pull-rightf">
                             <a href="{{ url('/member/'.$member->id.'/edit') }}" class="btn btn-md btn-primary">Edit
                                 Profile</a>
+                        @if(\Illuminate\Support\Facades\Auth::user()->access_level==1)
+                            <a href="{{ url('/pdf/'.$member->id)  }}"
+                               class="btn btn-xs btn-primary">Print Card</a></td>
+                          @endif
                             <br/><br/>
                         </div>
                         @endif
+
+
 
                         <div class="panel panel-default">
                             <div class="panel-heading">

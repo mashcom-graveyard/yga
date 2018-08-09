@@ -162,6 +162,7 @@
 
 
                                 <h5>Name: {{ $member->firstname." ".$member->surname }}</h5>
+                                <h5>Province: {{ $member->member_province->name }}</h5>
 
                                 @if ($member->member_designation->name == "Athlete")
                                     <h5>DOB: {{ date_format(date_create_from_format('Y-m-d', $member->dob ), 'd-m-Y')}}</h5>
@@ -232,18 +233,21 @@
                         <tr>
                             <td width="100%"><br/></td>
                         </tr>
-                        <tr>
-                            <td width="100%"><br/></td>
+                        <tr> 
+                            <td width="100%"></td>
                         </tr>
+                        
                         <tr>
                             <td width="100%" class="col-lg-10 col-lg-offset-1"><h3>EMERGENCY NUMBERS</h3></td>
                         </tr>
                         <tr>
-                            <td width="45%" class="col-lg-10 col-lg-offset-1">Command Center</td>
-                            <td width="45%">Fire and Ambulance</td>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">Command Center 054 223 117</td>
                         </tr>
                         <tr>
-                            <td width="45%" class="col-lg-10 col-lg-offset-1">ZRP</td>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">Fire and Ambulance 054 222 011/224015</td>
+                        </tr>
+                        <tr>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">ZRP 054 222 21216</td>
                         </tr>
 
                         <tr>

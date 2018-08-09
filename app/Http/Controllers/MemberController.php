@@ -62,7 +62,7 @@ class MemberController extends Controller
 
     function create()
     {
-        $designations = Designation::all();
+        $designations = Designation::orderBy('name','ASC')->get();
         $provinces = Province::all();
         $sports = Sport::all();
         return view('welcome', ['designation' => $designations, 'provinces' => $provinces, 'sports' => $sports]);

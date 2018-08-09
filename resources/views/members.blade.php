@@ -82,8 +82,10 @@
                         <td>
                             <button onclick="deleteDialog(<?php echo $member->id ?>,'members','<?php echo $member->firstname ." ".$member->surname ?>')" class="btn btn-danger btn-xs btn-inline">Delete</button>
                         </td>
+                         @if(\Illuminate\Support\Facades\Auth::user()->access_level==1)
                         <td><a href="{{ url('/pdf/'.$member->id)  }}"
                                class="btn btn-xs btn-primary">Print Card</a></td>
+                        @endif
 
 
                     </tr>
