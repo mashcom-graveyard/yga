@@ -7,6 +7,7 @@ use App\Member;
 use App\Sport;
 use App\Province;
 use App\Zone;
+use App\Jobs\GenerateAccreditationCards;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -63,8 +64,8 @@ class MemberController extends Controller
     function create()
     {
         $designations = Designation::orderBy('name','ASC')->get();
-        $provinces = Province::all();
-        $sports = Sport::all();
+        $provinces = Province::orderBy('name','ASC')->get();
+        $sports = Sport::orderBy('name','ASC')->get();
         return view('welcome', ['designation' => $designations, 'provinces' => $provinces, 'sports' => $sports]);
     }
 
@@ -173,6 +174,7 @@ class MemberController extends Controller
 
 
         if ($member->saveOrFail()) {
+             GenerateAccreditationCards::dispatch($request->province,$request->sport)->delay(now()->addMinutes(5));
             return back()->with('success', 'Record Updated Successfully');
 
         }
@@ -191,7 +193,7 @@ class MemberController extends Controller
     function store(Request $request, $id = null)
     {
         $request->validate([
-            'image' => 'mimes:jpeg,png,jpg,gif,svg|max:4048',
+            'image' => 'required|mimes:jpeg,png,jpg,gif,svg|max:4048',
             'province' => 'required',
             'firstname' => array('required', 'regex:/^([a-zA-Z\' ]+)$/'),
             'surname' => array('required', 'regex:/^([a-zA-Z\' ]+)$/'),
@@ -248,6 +250,7 @@ class MemberController extends Controller
 
 
         if ($member->saveOrFail()) {
+            GenerateAccreditationCards::dispatch($request->province,$request->sport)->delay(now()->addMinutes(5));
             return back()->with('success', 'Details Captured Successfully');
 
         }

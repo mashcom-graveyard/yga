@@ -147,7 +147,7 @@
                         </div>
                         <div class="col-lg-8">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName">Telephone</label>
+                                <label for="firstName">Telephone <label class="label label-success">optional</label></label>
                                 <input class="form-control" name="telephone"
                                        value="{{ old('telephone') }}"
                                        type="tel">
@@ -155,7 +155,7 @@
                             </div>
 
                             <div class="col-md-6 mb-3">
-                                <label for="firstName">Email</label>
+                                <label for="firstName">Email  <label class="label label-success">optional</label></label>
                                 <input class="form-control" name="email"
                                        value="{{ old('email') }}"
                                        type="email">

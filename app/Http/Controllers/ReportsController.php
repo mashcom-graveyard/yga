@@ -11,4 +11,9 @@ class ReportsController extends Controller
     public function master(){
         return view('report.index');
     }
+
+    public function getList(){
+    
+    	return view('report.list');
+    }
 }

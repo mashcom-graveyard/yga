@@ -203,11 +203,16 @@
                     </table>
                     <table width="100%">
                         <tr>
-
-                            <td class="col-lg-12 text-center text-italic">
+                             <td class="col-lg-3" style="overflow: hidden">
+                                <img src="{{ asset('SRC-LATEST.jpg') }}" alt="" style="width: 90px;">
+                            </td>
+                            <td class="col-lg-6 text-center text-italic">
                                 <h6>Enhancing peace, love, unity, Podium Perfomance and Economic Development through
                                     sport</h6>
                                 <br/><br/>
+                            </td>
+                            <td class="col-lg-3" style="overflow: hidden">
+                                <img src="{{ asset('ZNYG logo.PNG') }}" alt="" style="width: 90px;">
                             </td>
                         </tr>
                     </table>

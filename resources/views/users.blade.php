@@ -60,7 +60,7 @@
                     </td>
                     <td>{{ $user->created_at }}</td>
                     <td>{{ $user->updated_at }}</td>
-  @if ($user->access_level == 1) 
+                 @if(\Illuminate\Support\Facades\Auth::user()->access_level==1)
                     @if($user->is_active==0)
                         <td><a class="btn btn-xs btn-success" href="{{ url('/users/toggle_status/'.$user->id) }}">activate</a>
                         </td>
@@ -72,7 +72,7 @@
                         </td>
 
                     @endif
-@endif
+                @endif
 
                 </tr>
             @endforeach

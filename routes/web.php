@@ -63,15 +63,37 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
             ->inline('card.pdf');
     });
 
+     Route::get('/job/pdf/{province}/{sport}',function($province,$sport){
+        $snappy = App::make('snappy.pdf');
+        
+        $province = \App\Province::find($province);
+        $sport = App\Sport::find($sport);
+     
+        $snappy->generate("https://youthgames.changamire.com/province_sports_cards/$province->id/$sport->id", "/var/www/html/app/storage/app/public/$province->name/$sport->name.pdf",[],true);
+    });
+
     Route::get('/print/cards/{province}/{sport}',function ($province,$sport){
-        return PDF::loadFile("https://youthgames.changamire.com//province_sports_cards/$province/$sport")
+        return PDF::loadFile("https://youthgames.changamire.com/province_sports_cards/$province/$sport")
             ->setPaper('a4')
             ->setOption('margin-bottom', 0)
             ->inline('card.pdf');
 
 
     });
+
+    Route::get('/export','ReportsController@getList');
     Route::get('report','ReportsController@master');
+
+
+    Route::get('download/{province}/{sport}/{province_id}/{sport_id}', function($province=null,$sport=null,$province_id,$sport_id)
+    {
+        $path = storage_path()."/app/public/$province/$sport.pdf";
+        
+        if (file_exists($path)) {
+            return Response::download($path);
+        }
+        return "Not pre-generated cards were found in the system. <a href='/print/cards/$province_id/$sport_id'>Click here to generate the new cards, this process might take a few minutes</a>";
+    });
 
 
 });
