@@ -86,11 +86,12 @@
 
                 @if(\Illuminate\Support\Facades\Auth::user()->access_level==1)
                     <li><a href="{{ url('users') }}">Users</a></li>
-                    <li><a href="{{ url('rules') }}">Allocations</a></li>
+                   
                     <li>
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">System Parameters <span class="caret"></span></a>
                         <ul class="dropdown-menu">
+                             <li><a href="{{ url('rules') }}">Allocations</a></li>
                             <li><a href="{{ url('sport') }}">Sport Codes</a></li>
                             <li><a href="{{ url('province') }}">Provinces</a></li>
                             <li><a href="{{ url('venue') }}">Venues/Villages</a></li>
@@ -101,7 +102,28 @@
 
                         </ul>
                     </li>
-                    <li><a href="{{ url('report') }}">Report</a></li>
+                  
+                    <li>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Reports <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                              <li><a href="{{ url('report') }}">Card Printing</a></li>
+
+
+                        </ul>
+                    </li>
+                    <li><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">Export Members <span class="caret"></span></a>
+                           <ul class="dropdown-menu">
+                                <?php $list_provinces = \App\Province::orderBy('name','ASC')->get();?>
+
+                                @foreach($list_provinces as $province)
+                                    <li><a href='{{url("/export?province=$province->id")}}'>{{$province->name}}</a></li>
+                               @endforeach
+                           </ul>
+                       </li>
+
+
                 @endif
 
                 @if(\Illuminate\Support\Facades\Auth::user()->access_level==3)

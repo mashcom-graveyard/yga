@@ -81,8 +81,8 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
 
     });
 
-    Route::get('/export','ReportsController@getList');
-    Route::get('report','ReportsController@master');
+    Route::get('/export','ReportsController@getList')->middleware('admin_only');
+    Route::get('report','ReportsController@master')->middleware('admin_only');
 
 
     Route::get('download/{province}/{sport}/{province_id}/{sport_id}', function($province=null,$sport=null,$province_id,$sport_id)
