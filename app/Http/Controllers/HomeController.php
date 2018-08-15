@@ -12,6 +12,7 @@ use App\Rule;
 use App\Category;
 use App\Zone;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class HomeController extends Controller
 {
@@ -47,6 +48,10 @@ class HomeController extends Controller
         $venue_count = Venue::count();
         $sport_count = Sport::count();
 
+        $anomalies = Member::where('dob','>',Carbon::now()->subYears(7))
+            ->orWhere('dob','>',Carbon::now())
+            ->orWhere('dob',null)
+            ->count();
 
         return view('home', [
             'member_count' => $member_count,
@@ -54,10 +59,19 @@ class HomeController extends Controller
             'province_count' => $province_count,
             'venue_count' => $venue_count,
             'sport_count' => $sport_count,
-            'allocations_count' => $allocations_count
+            'allocations_count' => $allocations_count,
+            'anomalies'=>$anomalies
         ]);
     }
 
+    public function anomalies(){
+         $anomalies = Member::where('dob','>',Carbon::now()->subYears(7))
+            ->orWhere('dob','>',Carbon::now())
+            ->orWhere('dob',null)
+            ->get();
+
+            return view('report.anomalies',['anomalies'=>$anomalies]);
+    }
 
     public function update(Request $request)
     {

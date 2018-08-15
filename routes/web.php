@@ -95,6 +95,12 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
         return "Not pre-generated cards were found in the system. <a href='/print/cards/$province_id/$sport_id'>Click here to generate the new cards, this process might take a few minutes</a>";
     });
 
+    Route::get('demographics',function(){
+        return view('report.demographics')->middleware('admin_only');
+    });
+
+    Route::get('anomalies','HomeController@anomalies')->middleware('admin_only');
+
 
 });
 

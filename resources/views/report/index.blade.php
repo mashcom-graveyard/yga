@@ -26,7 +26,7 @@ $sports = \App\Sport::orderBy('name', 'ASC')->get();
                             @if($count>0)
                                 <a href='{{ url("/print/cards/$province->id/$sport->id") }}' class="btn btn-primary btn-xs  inline pull-left"><b>Print Cards</b></a>
                                 @if(Storage::disk('public')->exists("$province->name/$sport->name.pdf" ))
-                                <a href='{{url("/download/$province->name/$sport->name/$province->id/$sport->id")}}' class="btn btn-xs btn-success btn-inline  inline pull-left"><b>Download Cards</b></a>
+                                <a href='{{url("/download/$province->name/$sport->name/$province->id/$sport->id")}}' class="btn btn-xs btn-success btn-inline  inline pull-left" style="margin-left: 5% !important;"><b>Download Cards</b></a>
                                 @endif
                             @endif
                         </td>

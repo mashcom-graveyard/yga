@@ -108,6 +108,7 @@
                            aria-expanded="false">Reports <span class="caret"></span></a>
                         <ul class="dropdown-menu">
                               <li><a href="{{ url('report') }}">Card Printing</a></li>
+                             <!-- <li><a href="{{ url('demographics') }}">Demographics</a></li>-->
 
 
                         </ul>
@@ -118,7 +119,7 @@
                                 <?php $list_provinces = \App\Province::orderBy('name','ASC')->get();?>
 
                                 @foreach($list_provinces as $province)
-                                    <li><a href='{{url("/export?province=$province->id")}}'>{{$province->name}}</a></li>
+                                    <li><a href='{{url("/export?province=$province->id")}}'>{{$province->name}} <b>({{ App\Member::whereProvince($province->id)->count()}})</b></a></li>
                                @endforeach
                            </ul>
                        </li>

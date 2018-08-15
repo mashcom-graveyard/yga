@@ -14,6 +14,13 @@
     </h2>
     <h5 class="text-center"><b>Get a quick overview of all records</b></h5>
     <br/><br/>
+    @if(\Illuminate\Support\Facades\Auth::user()->access_level ==1 && $anomalies>0)
+    <div class="col-lg-12">
+   <div class="alert alert-danger">
+       <p style="font-weight: bold !important;">There are {{ $anomalies}} possible anomalities in the data captured by the users. <a href="{{url('/anomalies')}}">Click here to view them</a></p>
+   </div>
+</div>
+   @endif
     <div class="col-lg-3">
         <div class="panel panel-default">
             <div class="panel-heading text-center"><b>Registered Members</b></div>
@@ -24,6 +31,7 @@
 
 
     @if(\Illuminate\Support\Facades\Auth::user()->access_level ==1)
+     
         <div class="col-lg-3">
             <div class="panel panel-default">
                 <div class="panel-heading text-center"><b>Provinces</b></div>
