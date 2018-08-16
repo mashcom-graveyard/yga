@@ -53,7 +53,7 @@
 
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label for="firstName">Date of Birth</label>
+                            <label for="firstName">Date of Birth <label class="label label-success">Format dd/mm/yyyy</label></label>
                             <input class="form-control" name="dob" placeholder="dd-mm-yyyy"
                                    value="{{ old('dob') }}"
                                    type="date">

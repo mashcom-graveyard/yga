@@ -96,8 +96,8 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
     });
 
     Route::get('demographics',function(){
-        return view('report.demographics')->middleware('admin_only');
-    });
+        return view('report.demographics');
+    })->middleware('admin_only');
 
     Route::get('anomalies','HomeController@anomalies')->middleware('admin_only');
 

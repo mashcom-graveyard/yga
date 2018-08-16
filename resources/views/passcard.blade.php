@@ -175,7 +175,7 @@
 
                                 @if ($member->member_designation->name == "Athlete")
 
-                                    <h5>Sport: {{ $member->member_sport->name }}</h5>
+                                    <h3>Sport: {{ $member->member_sport->name }}</h3>
 
 
 

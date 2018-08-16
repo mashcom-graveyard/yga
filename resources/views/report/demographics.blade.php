@@ -21,6 +21,8 @@
         	array_push($province_data, ["name"=>$p->name,'y'=>$count]); 
         }
 
+        $sports = \App\Sport::orderBy('name','ASC')->get();
+
        
         
         
@@ -56,6 +58,30 @@
   </tbody>
 </table>
 
+<table id="sportdatatable" style="display: none !important">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Sport</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<?php
+  		 foreach($sports as $sport) {
+        	
+			?>
+				<tr>
+			      <th>{{ $sport->name }} </th>
+			      <td>{{ $sport->sport_members->count() }}</td>
+    			</tr>
+			<?php
+        }
+  	?>
+    
+   
+  </tbody>
+</table>
+
 <div class="col-lg-12">
     <h2 class="text-center bold"><b>Demographics</b></h2>
     <br/>
@@ -68,6 +94,11 @@
 	<div class="col-lg-12">
 		<br/><br/>
    		<div id="agedist" class="panel"></div>
+	</div>
+
+	<div class="col-lg-12">
+		<br/><br/>
+   		<div id="sportdist" class="panel"></div>
 	</div>
 
 </div>
@@ -164,6 +195,33 @@ Highcharts.chart('agedist', {
   },
   title: { 
     text: 'Age Distribution Graph'
+  },
+  yAxis: {
+    allowDecimals: false,
+    title: {
+      text: 'Number of Members'
+    }
+  },
+  tooltip: {
+    formatter: function () {
+      return '<b>' + this.series.name + '</b><br/>' +
+        this.point.y + ' members: ' + this.point.name.toLowerCase();
+    }
+  }
+});
+
+Highcharts.chart('sportdist', {
+  data: {
+    table: 'sportdatatable'
+  },
+  chart: {
+    type: 'column'
+  },
+  style:{
+    fontFamily: 'eina'
+  },
+  title: { 
+    text: 'Sport Code Distribution Graph'
   },
   yAxis: {
     allowDecimals: false,
