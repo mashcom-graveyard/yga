@@ -52,13 +52,26 @@
                                    type="text">
 
                         </div>
-                        <div class="col-md-4 mb-3">
+                     <!--   <div class="col-md-4 mb-3">
+
+
                             <label for="firstName">Date of Birth <label class="label label-success">Format dd/mm/yyyy</label></label>
-                            <input class="form-control" name="dob" placeholder="dd-mm-yyyy"
+                            <input class="form-control" name="dob"
                                    value="{{ old('dob') }}"
                                    type="date">
 
+                        </div>-->
+
+                         <div class="col-md-4 mb-3" style="display: nodne !important;">
+                             <label for="firstName">Date of Birth</label>
+                             <div style="width: 100% !important;">
+                              <select name="day" id="dobday" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                              <select name="month" id="dobmonth" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                            <select name="year" id="dobyear" class="form-control" style="width: 32% !important;float: left !important;"></select>
                         </div>
+                        </div>
+
+                      
 
                         <div class="col-md-4 mb-3">
                             <br/>

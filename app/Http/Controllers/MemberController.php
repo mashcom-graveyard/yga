@@ -111,8 +111,7 @@ class MemberController extends Controller
 
     function update(Request $request, $id)
     {
-        // dd($request->image);
-        $national_id = strtoupper(trim($request->national_id));
+               $national_id = strtoupper(trim($request->national_id));
         $request->national_id = preg_replace("^\\s^", "", $national_id);
         $request->firstname = trim($request->firstname);
         $request->surname = trim($request->surname);
@@ -134,11 +133,15 @@ class MemberController extends Controller
             'address' => 'max:255',
             'telephone' => 'nullable|numeric|digits_between:5,15',
             'mobile' => 'required|numeric|digits_between:6,16',
-            'dob' => 'date',
+            'year'=>'required',
+            'month'=>'required|digits_between:1,12',
+            'day'=>'required|digits_between:1,31',
             'sport' => 'required',
             'gender' => 'required'
 
         ]);
+
+
 
 
         if ($request->image != null) {
@@ -151,6 +154,7 @@ class MemberController extends Controller
             $img->save($path);
         }
 
+        $date_of_birth = $request->year."-".$request->month."-".$request->day;
 
         $member = Member::find($id);
 
@@ -166,7 +170,7 @@ class MemberController extends Controller
         $member->address = $request->address;
         $member->telephone = $request->telephone;
         $member->mobile = $request->mobile;
-        $member->dob = $request->dob;
+        $member->dob = $date_of_birth;
         $member->sport = $request->sport;
         $member->gender = $request->gender;
         $member->theme = $request->theme;
@@ -207,7 +211,9 @@ class MemberController extends Controller
             'address' => 'required|max:255',
             'telephone' => 'nullable|numeric|digits_between:5,15',
             'mobile' => 'required|numeric|digits_between:6,16',
-            'dob' => 'nullable|date',
+           'year'=>'required',
+            'month'=>'required|digits_between:1,12',
+            'day'=>'required|digits_between:1,31',
             'sport' => 'required',
             'gender' => 'required',
 
@@ -229,7 +235,7 @@ class MemberController extends Controller
         $request->email = trim($request->email);
         $request->mobile = preg_replace("^\\s^", "", $request->mobile);
 
-
+ $date_of_birth = $request->year."-".$request->month."-".$request->day;
         $member = new Member();
 
         $member->province = $request->province;
@@ -242,7 +248,7 @@ class MemberController extends Controller
         $member->address = $request->address;
         $member->telephone = $request->telephone;
         $member->mobile = $request->mobile;
-        $member->dob = $request->dob;
+        $member->dob = $date_of_birth;
         $member->sport = $request->sport;
         $member->gender = $request->gender;
         $member->theme = $request->theme;

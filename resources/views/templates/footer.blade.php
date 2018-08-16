@@ -131,8 +131,32 @@
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
+
+
+<script src="{{ asset('js/dobPicker.min.js')}}"></script>
+
+
 <script type="text/javascript">
 
+    $(document).ready(function(){
+        $.dobPicker({
+            // Selectopr IDs
+daySelector: '#dobday',
+monthSelector: '#dobmonth',
+yearSelector: '#dobyear',
+
+// Default option values
+dayDefault: 'Day',
+monthDefault: 'Month',
+yearDefault: 'Year',
+
+// Minimum age
+minimumAge: 5,
+
+// Maximum age
+maximumAge: 100
+        });
+    });
     function updateSection(id, section_type, current_value) {
 
         $("#update_id").val(id);

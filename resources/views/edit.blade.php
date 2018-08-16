@@ -35,21 +35,7 @@
                 <div class="row">
 
                     <br/><br/>
-                    <div class="col-md-4 mb-3">
-                        <label for="firstName">Province</label>
-                        <select class="form-control" id="firstName" name="province"
-                                value="" required=""
-                                type="text">
-                            <option></option>
-
-                            @foreach($provinces as $province)
-                                <option value="{{ $province->id }}" <?php if($province->id==$member->province){ echo "selected";} ?> >{{$province->name}}</option>
-                            @endforeach
-
-
-                        </select>
-                    </div>
-
+                   
 
                     <div class="col-md-4 mb-3">
                         <label for="firstName">Firstname</label>
@@ -66,6 +52,45 @@
                                type="text">
 
                     </div>
+
+                     <div class="col-md-4 mb-3" style="display: nodne !important;">
+                             <label for="firstName">Date of Birth</label>
+                             <div style="width: 100% !important;">
+                              <select name="day" id="dobday" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                              <select name="month" id="dobmonth" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                            <select name="year" id="dobyear" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                        </div>
+                        </div>
+
+                    <div class="col-md-4 mb-3">
+                        <br/>
+                        <label for="firstName">Gender</label>
+                        <select class="form-control" name="gender"
+                                required=""
+                        >
+                            <option></option>
+                            <option <?php if ($member->gender == 'Male') {
+                                echo "selected";
+                            } ?>>Male
+                            </option>
+                            <option <?php if ($member->gender == 'Female') {
+                                echo "selected";
+                            } ?>>Female
+                            </option>
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-4 mb-3">
+                             <br/>
+                        <label for="firstName">National ID <label class="label label-success">Format 67-2001643-H-09</label></label>
+                        <input class="form-control" name="national_id" placeholder="National ID Number"
+                               value="{{ $member->national_id }}" required=""
+                               type="text">
+
+                    </div>
+
+
                     <div class="col-md-4 mb-3">
                         <br/>
                         <label for="firstName">Select ID Photo</label>
@@ -76,7 +101,24 @@
 
 
                 <div class="row">
+
                     <br/><br/>
+                     <div class="col-md-4 mb-3">
+                        <label for="firstName">Province</label>
+                        <select class="form-control" id="firstName" name="province"
+                                value="" required=""
+                                type="text" readonly>
+
+                            @foreach($provinces as $province)
+                                    @if(\Illuminate\Support\Facades\Auth::user()->province_id == $province->id )
+                                        <option value="{{ $province->id }}" selected>{{$province->name}}</option>
+                                    @endif
+                                @endforeach
+
+
+                        </select>
+                    </div>
+
                     <div class="col-md-4 mb-3">
                         <label for="firstName">Designation</label>
                         <select class="form-control" name="designation">
@@ -89,13 +131,24 @@
 
                     </div>
 
-                    <div class="col-md-4 mb-3">
-                        <label for="firstName">National ID</label>
-                        <input class="form-control" name="national_id" placeholder="National ID Number"
-                               value="{{ $member->national_id }}" required=""
-                               type="text">
+                     <div class="col-md-4 mb-3">
+                        <label for="firstName">Sport</label>
+                        <select class="form-control" id="firstName" name="sport"
+                                value="" required=""
+                                type="text">
+                            <option></option>
+
+                            @foreach($sports as $sport)
+                                <option value="{{ $sport->id }}"  <?php  if($member->member_sport->id==$sport->id) { echo "selected";} ?>>{{$sport->name}}</option>
+                            @endforeach
+
+
+                        </select>
 
                     </div>
+
+
+                    
                 </div>
 
                 <div class="row">
@@ -108,7 +161,7 @@
                     </div>
                     <div class="col-lg-8">
                         <div class="col-md-6 mb-3">
-                            <label for="firstName">Telephone</label>
+                            <label for="firstName">Telephone <label class="label label-success">optional</label></label>
                             <input class="form-control" name="telephone"
                                    value="{{ $member->telephone }}"
                                    type="text">
@@ -116,7 +169,7 @@
                         </div>
 
                         <div class="col-md-6 mb-3">
-                            <label for="firstName">Email</label>
+                            <label for="firstName">Email <label class="label label-success">optional</label></label>
                             <input class="form-control" name="email"
                                    value="{{ $member->email }}"
                                    type="email">
@@ -136,48 +189,10 @@
 
                 <div class="row">
                     <br/><br/>
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName">Date of Birth</label>
-                        <input class="form-control" name="dob" placeholder="dd-mm-yyyy"
-                               value="{{ $member->dob }}" required=""
-                               type="date">
+                  
 
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName">Sport</label>
-                        <select class="form-control" id="firstName" name="sport"
-                                value="" required=""
-                                type="text">
-                            <option></option>
-
-                            @foreach($sports as $sport)
-                                <option value="{{ $sport->id }}"  <?php  if($member->member_sport->id==$sport->id) { echo "selected";} ?>>{{$sport->name}}</option>
-                            @endforeach
-
-
-                        </select>
-
-                    </div>
-
-                    <div class="col-md-6 mb-3">
-                        <br/>
-                        <label for="firstName">Gender</label>
-                        <select class="form-control" name="gender"
-                                required=""
-                        >
-                            <option></option>
-                            <option <?php if ($member->gender == 'Male') {
-                                echo "selected";
-                            } ?>>Male
-                            </option>
-                            <option <?php if ($member->gender == 'Female') {
-                                echo "selected";
-                            } ?>>Female
-                            </option>
-                        </select>
-
-                    </div>
+                   
+                    
 
                 </div>
 
