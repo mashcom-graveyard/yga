@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="keywords" content="Blessing Mashoko, Mashcom, Youth Games"/>
+    <meta name="description" content="Youth Games Accreditation System designed and developed by Blessing Mashoko">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

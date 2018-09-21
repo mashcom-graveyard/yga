@@ -42,7 +42,7 @@
         	$age = \Carbon\Carbon::now()->subYears($i)->format('Y-m-d');
         	$now = \Carbon\Carbon::parse($age)->addYears(1)->format('Y-m-d');
         	//dump("between $now and $age");
-        	$people =  \App\Member::whereBetween('dob',[$age,$now])->count();
+        	$people =  \App\Member::whereDesignation(1)->whereBetween('dob',[$age,$now])->count();
         	//dump($people);
 			//dump("$people with age $i");
 			?>

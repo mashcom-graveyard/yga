@@ -16,7 +16,7 @@ return [
     |
     */
 
-    'driver' => env('SESSION_DRIVER', 'file'),
+    'driver' => 'file',
 
     /*
     |--------------------------------------------------------------------------
@@ -29,7 +29,7 @@ return [
     |
     */
 
-    'lifetime' => env('SESSION_LIFETIME', 120),
+    'lifetime' =>120,
 
     'expire_on_close' => false,
 
@@ -124,7 +124,7 @@ return [
 
     'cookie' => env(
         'SESSION_COOKIE',
-        str_slug(env('APP_NAME', 'laravel'), '_').'_session'
+        str_slug('youth_games', '_').'_session'
     ),
 
     /*
@@ -151,7 +151,7 @@ return [
     |
     */
 
-    'domain' => env('SESSION_DOMAIN', null),
+    'domain' =>null,
 
     /*
     |--------------------------------------------------------------------------
@@ -164,7 +164,7 @@ return [
     |
     */
 
-    'secure' => env('SESSION_SECURE_COOKIE', false),
+    'secure' =>false,
 
     /*
     |--------------------------------------------------------------------------
