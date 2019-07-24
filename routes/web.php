@@ -116,14 +116,11 @@ Route::get('/province_sports_cards/{province}/{sport}','MemberController@generat
 
 
 Route::any('/deactivated', function () {
-
     echo "Account deactivated, Contact System admin for more details";
     return;
 });
 
-
 Route::get('/api/dump', function () {
-
     if (isset($_GET['youth7613'])) {
         return \App\Member::with('member_designation', 'member_sport', 'member_province')->get()->toJson();
     }
@@ -131,7 +128,6 @@ Route::get('/api/dump', function () {
 });
 
 Route::get('/api/dump/villages', function () {
-
     if (isset($_GET['youth7613'])) {
         return \App\Venue::all()->toJson();
     }
@@ -166,6 +162,8 @@ Route::get('/api/dump/sport', function () {
         return App\Sport::all()->toJson();
     }
 });
+
+Route::post("/api/meal","MealController@store")->middleware('auth.basic');;
 
 Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes();

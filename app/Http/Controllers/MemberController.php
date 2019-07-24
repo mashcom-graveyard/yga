@@ -235,7 +235,7 @@ class MemberController extends Controller
         $request->email = trim($request->email);
         $request->mobile = preg_replace("^\\s^", "", $request->mobile);
 
- $date_of_birth = $request->year."-".$request->month."-".$request->day;
+        $date_of_birth = $request->year."-".$request->month."-".$request->day;
         $member = new Member();
 
         $member->province = $request->province;
