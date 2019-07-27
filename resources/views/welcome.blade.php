@@ -110,8 +110,11 @@
                                     value="" required=""
                                     type="text" readonly="">
                                 @foreach($provinces as $province)
-                                    @if(\Illuminate\Support\Facades\Auth::user()->province_id == $province->id )
+                                    @if(\Illuminate\Support\Facades\Auth::user()->province_id == $province->id && \Illuminate\Support\Facades\Auth::user()->access_level != 1)
                                         <option value="{{ $province->id }}">{{$province->name}}</option>
+                                    @endif
+                                    @if(\Illuminate\Support\Facades\Auth::user()->access_level == 1)
+                                       <option value="{{ $province->id }}">{{$province->name}}</option>
                                     @endif
                                 @endforeach
 

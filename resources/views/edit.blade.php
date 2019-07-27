@@ -56,9 +56,9 @@
                      <div class="col-md-4 mb-3" style="display: nodne !important;">
                              <label for="firstName">Date of Birth</label>
                              <div style="width: 100% !important;">
-                              <select name="day" id="dobday" class="form-control" style="width: 32% !important;float: left !important;"></select>
-                              <select name="month" id="dobmonth" class="form-control" style="width: 32% !important;float: left !important;"></select>
-                            <select name="year" id="dobyear" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                              <select name="day" id="adobday" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                              <select name="month" id="adobmonth" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                            <select name="year" id="adobyear" class="form-control" style="width: 32% !important;float: left !important;"></select>
                         </div>
                         </div>
 
@@ -207,6 +207,46 @@
 
 
     </div>
+<script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 
+
+
+<script src="{{ asset('js/dobPicker.min.js')}}"></script>
+<?php 
+  $full_dob = explode("-",$member->dob);
+  
+  $js_year = $full_dob[0];
+  $js_month = $full_dob[1];
+  $js_day = $full_dob[2];
+  ?>
+
+<script type="text/javascript">
+
+    $(document).ready(function(){
+        $.dobPicker({
+            // Selectopr IDs
+daySelector: '#adobday',
+monthSelector: '#adobmonth',
+yearSelector: '#adobyear',
+
+// Default option values
+dayDefault: '<?php echo $js_day; ?>',
+monthDefault: '<?php echo $js_month; ?>',
+yearDefault: '<?php echo $js_year; ?>',
+
+// Minimum age
+minimumAge: 5,
+
+// Maximum age
+maximumAge: 100
+        });
+    });
+ </script>
 
 @include('templates.footer')

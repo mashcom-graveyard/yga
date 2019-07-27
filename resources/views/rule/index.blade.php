@@ -106,14 +106,14 @@
 
                             <hr/>
                             <label for="">Male Games Venue</label>
-                            <select type="text" name="male_venue" id="" class="form-control" required>
+                            <select type="text" name="male_venue" id="" class="form-control">
                                 <option value=""></option>
                                 @foreach($venues as $venue)
                                     <option value="{{$venue->id}}">{{$venue->name}}</option>
                                 @endforeach
                             </select>
                             <label for="">Male Games Village</label>
-                            <select type="text" name="male_village" id="" class="form-control" required>
+                            <select type="text" name="male_village" id="" class="form-control">
                                 <option value=""></option>
                                 @foreach($venues as $venue)
                                     <option value="{{$venue->id}}">{{$venue->name}}</option>
@@ -122,14 +122,14 @@
                             <hr/>
 
                             <label for="">Female Games Venue</label>
-                            <select type="text" name="female_venue" id="" class="form-control" required>
+                            <select type="text" name="female_venue" id="" class="form-control">
                                 <option value=""></option>
                                 @foreach($venues as $venue)
                                     <option value="{{$venue->id}}">{{$venue->name}}</option>
                                 @endforeach
                             </select>
                             <label for="">Female Games Village</label>
-                            <select type="text" name="female_village" id="" class="form-control" required>
+                            <select type="text" name="female_village" id="" class="form-control">
                                 <option value=""></option>
                                 @foreach($venues as $venue)
                                     <option value="{{$venue->id}}">{{$venue->name}}</option>

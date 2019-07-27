@@ -10,7 +10,8 @@ $sports = \App\Sport::orderBy('name', 'ASC')->get();
 
     <?php $r_index =0 ?>
     @foreach ($provinces as $province)
-          
+          <?php $province_count = \App\Member::whereProvince($province->id)->count(); ?>
+              @if($province_count>0)  
         <div class="col-lg-12">   
             <table class="table table-striped table-bordered">
                 <tr style="background: #222">
@@ -19,7 +20,8 @@ $sports = \App\Sport::orderBy('name', 'ASC')->get();
                 <tr>
                 @foreach ($sports as $sport)
                     <?php $count = \App\Member::whereProvince($province->id)->whereSport($sport->id)->count(); ?>
-                    <tr>
+              @if($count>0)      
+              <tr>
                         <td width="40%">{{$sport->name}}</td>
                         <td width="20%"><b>{{ $count }}</b></td>
                         <td>
@@ -28,9 +30,12 @@ $sports = \App\Sport::orderBy('name', 'ASC')->get();
                                 @if(Storage::disk('public')->exists("$province->name/$sport->name.pdf" ))
                                 <a href='{{url("/download/$province->name/$sport->name/$province->id/$sport->id")}}' class="btn btn-xs btn-success btn-inline  inline pull-left" style="margin-left: 5% !important;"><b>Download Cards</b></a>
                                 @endif
+                                <a href='{{ url("/refresh/card/$province->id/$sport->id") }}' class="btn btn-warning btn-xs  inline pull-left" style="margin-left: 5% !important;"><b>Add to Buffer</b></a>
+                               
                             @endif
                         </td>
                     </tr>
+               @endif
                     
 
                     @endforeach
@@ -38,6 +43,8 @@ $sports = \App\Sport::orderBy('name', 'ASC')->get();
 
             </table>
         </div>
+    @endif
+  
     @endforeach
 
 

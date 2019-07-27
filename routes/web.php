@@ -73,8 +73,19 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
      
         $snappy->generate("https://youthgames.changamire.com/province_sports_cards/$province->id/$sport->id", "/var/www/html/app/storage/app/public/$province->name/$sport->name.pdf",[],true);
     });
+  
+   Route::get('/refresh/card/{province}/{sport}',function($province,$sport){
+        $snappy = App::make('snappy.pdf');
+        
+        $province = \App\Province::find($province);
+        $sport = App\Sport::find($sport);
+     
+        $snappy->generate("https://youthgames.changamire.com/province_sports_cards/$province->id/$sport->id", "/var/www/html/app/storage/app/public/$province->name/$sport->name.pdf",[],true);
+        return back();
+   });
 
     Route::get('/print/cards/{province}/{sport}',function ($province,$sport){
+        
         return PDF::loadFile("https://youthgames.changamire.com/province_sports_cards/$province/$sport")
             ->setPaper('a4')
             ->setOption('margin-bottom', 0)
@@ -102,7 +113,8 @@ Route::group(['middleware' => ['auth', 'active_only']], function () {
     })->middleware('admin_only');
 
     Route::get('anomalies','HomeController@anomalies')->middleware('admin_only');
-
+    
+ 
 
 });
 

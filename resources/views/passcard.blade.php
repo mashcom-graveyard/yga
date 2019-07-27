@@ -123,7 +123,7 @@
                             </td>
                             <td class="col-lg-6 text-center">
                                 <h5>Zimbabwe National Youth and Paralympic Games Midlands</h5>
-                                <h5>15-28 August 2018</h5>
+                                <h5>27 July- 10 August 2019</h5>
                             </td>
                             <td class="col-lg-3" style="overflow: hidden">
                                 <img src="{{ asset('download.jpg') }}" alt="" style="width: 90px;">
@@ -227,7 +227,7 @@
                             </td>
                             <td class="col-lg-6 text-center">
                                 <h6>Zimbabwe National Youth and Paralympic Games Midlands</h6>
-                                <h6>15-28 August 2018</h6>
+                                <h6>27 July- 10 August 2019</h6>
                             </td>
                             <td class="col-lg-3" style="overflow: hidden">
                                 <img src="{{ asset('ZNYG logo.PNG') }}" alt="" style="width: 90px;">
@@ -238,25 +238,27 @@
                         <tr>
                             <td width="100%"><br/></td>
                         </tr>
-                        <tr> 
-                            <td width="100%"></td>
-                        </tr>
                         
                         <tr>
-                            <td width="100%" class="col-lg-10 col-lg-offset-1"><h3>EMERGENCY NUMBERS</h3></td>
+                            <td width="100%" class="col-lg-10 col-lg-offset-1"><h3>IMPORTANT NUMBERS</h3></td>
                         </tr>
                         <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">Command Center 054 223 117</td>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">CEO-0712365272  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; Technical-0773740640</td>
                         </tr>
                         <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">Fire and Ambulance 054 222 011/224015</td>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">Security-0716800173 &nbsp; &nbsp; &nbsp; Logistics-0773375471</td>
                         </tr>
                         <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">ZRP 054 222 21216</td>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">GM-0772770212 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Operations-0773028400</td>
                         </tr>
-
                         <tr>
-                            <td width="100%"><br/></td>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">Medical-0775701614 &nbsp; &nbsp; &nbsp; Secretariat-0773747556</td>
+                        </tr>
+                      <tr>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">Catering-0779120743 &nbsp; &nbsp; &nbsp; Finance-0773742735</td>
+                        </tr>
+                       <tr>
+                            <td width="95%" class="col-lg-10 col-lg-offset-1">Accreditation-0772716896 &nbsp; &nbsp; &nbsp; Accommodation-0712564729</td>
                         </tr>
                         <tr>
                             <td width="45%" class="col-lg-10 col-lg-offset-1"><h3>ZONE CODES</h3></td>
@@ -269,25 +271,7 @@
                             </tr>
                         @endforeach
                     </table>
-                    <table width="100%">
-                        <tr>
-                            <td class="col-lg-4" style="overflow: hidden">
-
-                                <br/><?php
-
-                                $member_json_data = json_encode(["id" => $member->id]);
-                                QRCode::text($member_json_data)->svg();
-                                ?>
-
-                            </td>
-                            <td class="col-lg-6">
-
-
-                            </td>
-                        </tr>
-
-
-                    </table>
+                   
                     <table width="100%">
                         <tr>
 
