@@ -174,8 +174,8 @@ Route::get('/api/dump/sport', function () {
         return App\Sport::all()->toJson();
     }
 });
-
-Route::post("/api/meal","MealController@store")->middleware('auth.basic');;
+Route::get("/meals","MealController@index")->middleware('admin_only');
+Route::post("/api/meal","MealController@store")->middleware('auth.basic');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 Auth::routes();

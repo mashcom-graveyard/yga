@@ -65,10 +65,10 @@
                          <div class="col-md-4 mb-3" style="display: nodne !important;">
                              <label for="firstName">Date of Birth</label>
                              <div style="width: 100% !important;">
-                              <select name="day" id="dobday" class="form-control" style="width: 32% !important;float: left !important;"></select>
-                              <select name="month" id="dobmonth" class="form-control" style="width: 32% !important;float: left !important;"></select>
-                            <select name="year" id="dobyear" class="form-control" style="width: 32% !important;float: left !important;"></select>
-                        </div>
+                                  <select name="day" id="dobday" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                                  <select name="month" id="dobmonth" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                                <select name="year" id="dobyear" class="form-control" style="width: 32% !important;float: left !important;"></select>
+                              </div>
                         </div>
 
                       

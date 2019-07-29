@@ -97,7 +97,7 @@
             }
 
             .red-bg {
-                background: #e40203 !important;
+                background: #333 !important;
                 color: #fff !important;
             }
         }
@@ -218,7 +218,7 @@
                     </table>
                 </td>
                 <td width="45%"
-                    style="background-image: url('{{asset('card_bg.jpg')}}') !important;padding: 6px !important;color: #fff !important;"
+                    style="padding: 6px !important;color: #000 !important;"
                     id="backcover">
                     <table width="100%">
                         <tr>
@@ -226,8 +226,8 @@
                                 <img src="{{ asset('SRC-LATEST.jpg') }}" alt="" style="width: 90px;">
                             </td>
                             <td class="col-lg-6 text-center">
-                                <h6>Zimbabwe National Youth and Paralympic Games Midlands</h6>
-                                <h6>27 July- 10 August 2019</h6>
+                                <h6 style="color:#000 !important;">Zimbabwe National Youth and Paralympic Games Midlands</h6>
+                                <h6 style="color:#000 !important;">27 July- 10 August 2019</h6>
                             </td>
                             <td class="col-lg-3" style="overflow: hidden">
                                 <img src="{{ asset('ZNYG logo.PNG') }}" alt="" style="width: 90px;">
@@ -240,33 +240,33 @@
                         </tr>
                         
                         <tr>
-                            <td width="100%" class="col-lg-10 col-lg-offset-1"><h3>IMPORTANT NUMBERS</h3></td>
+                            <td width="100%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1"><h3>IMPORTANT NUMBERS</h3></td>
                         </tr>
                         <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">CEO-0712365272  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; Technical-0773740640</td>
+                            <td width="95%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">CEO-0712365272  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; Technical-0773740640</td>
                         </tr>
                         <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">Security-0716800173 &nbsp; &nbsp; &nbsp; Logistics-0773375471</td>
+                            <td width="95%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Security-0716800173 &nbsp; &nbsp; &nbsp; Logistics-0773375471</td>
                         </tr>
                         <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">GM-0772770212 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Operations-0773028400</td>
+                            <td width="95%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">GM-0772770212 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Operations-0773028400</td>
                         </tr>
                         <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">Medical-0775701614 &nbsp; &nbsp; &nbsp; Secretariat-0773747556</td>
+                            <td width="95%" style="color:#000 !important;" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Medical-0775701614 &nbsp; &nbsp; &nbsp; Secretariat-0773747556</td>
                         </tr>
                       <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">Catering-0779120743 &nbsp; &nbsp; &nbsp; Finance-0773742735</td>
+                            <td width="95%" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Catering-0779120743 &nbsp; &nbsp; &nbsp; Finance-0773742735</td>
                         </tr>
                        <tr>
-                            <td width="95%" class="col-lg-10 col-lg-offset-1">Accreditation-0772716896 &nbsp; &nbsp; &nbsp; Accommodation-0712564729</td>
+                            <td width="95%" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Accreditation-0772716896 &nbsp; &nbsp; &nbsp; Accommodation-0712564729</td>
                         </tr>
                         <tr>
-                            <td width="45%" class="col-lg-10 col-lg-offset-1"><h3>ZONE CODES</h3></td>
+                            <td width="45%" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1"><h3  style="color:#000 !important;">ZONE CODES</h3></td>
                         </tr>
                         @foreach($designation_zones as $dzone)
                             <tr>
 
-                                <td width="100%" class="col-lg-10 col-lg-offset-1">ZONE ACCESS {{$dzone->id}}
+                                <td width="100%" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">ZONE ACCESS {{$dzone->id}}
                                     : {{strtoupper($dzone->name)}}</td>
                             </tr>
                         @endforeach
@@ -276,7 +276,7 @@
                         <tr>
 
                             <td class="col-lg-12 text-center text-italic">
-                                <h6>Enhancing peace, love, unity, Podium Perfomance and Economic Development through
+                                <h6  style="color:#000 !important;">Enhancing peace, love, unity, Podium Perfomance and Economic Development through
                                     sport</h6>
                             </td>
                         </tr>
