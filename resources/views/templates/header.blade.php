@@ -59,7 +59,7 @@
         }
 
         body {
-            font-family: "eina", "segoe ui", "helvetica" !important;
+            font-family: "Inter","eina", "segoe ui", "helvetica" !important;
         }
     </style>
     <!-- Styles -->

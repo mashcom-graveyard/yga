@@ -30,7 +30,7 @@ class GenerateAccreditationCards implements ShouldQueue
      */
     public function handle()
     {
-        
+        return;
         $snappy = \App::make('snappy.pdf');
         
         $province = \App\Province::find($this->province_id);

@@ -65,12 +65,12 @@
 
                 <div class="row">
                     <div class="col-lg-12">
-                        <h4 class="text-bold"><b>Default password is youth2018</b></h4>
+                        <h4 class="text-bold"><b>Default password is youth2024</b></h4>
                     </div>
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <input type="text" name="password" id="password" class="form-control "
-                                   placeholder="Password" tabindex="5" value="youth2018">
+                                   placeholder="Password" tabindex="5" value="youth2024">
                         </div>
                     </div>
 

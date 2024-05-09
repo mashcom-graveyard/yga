@@ -21,7 +21,7 @@ class ActiveOnly
             //check if the default password is used
             $user = User::find(auth()->user()->id);
 
-            if(Hash::check('youth2018', $user->password)){
+            if(Hash::check('youth2024', $user->password)){
                 return redirect('/security/password')->with('change_password','To enhance security, you need to change your password before you can start using the system');
             }
 

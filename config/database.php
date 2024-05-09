@@ -45,7 +45,7 @@ return [
             'port' => '3306',
             'database' => 'team_management',
             'username' => 'root',
-            'password' => 'studios',
+            'password' => '',
             'unix_socket' =>  '',
             'charset' => 'utf8mb4',
             'collation' => 'utf8mb4_unicode_ci',

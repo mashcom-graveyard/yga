@@ -122,8 +122,7 @@
                                 <img src="{{ asset('logo.jpg') }}" alt="" style="width: 90px;">
                             </td>
                             <td class="col-lg-6 text-center">
-                                <h5>Zimbabwe National Youth and Paralympic Games Midlands</h5>
-                                <h5>27 July- 10 August 2019</h5>
+                                <h5>Zimbabwe National Youth and Paralympic</h5>
                             </td>
                             <td class="col-lg-3" style="overflow: hidden">
                                 <img src="{{ asset('download.jpg') }}" alt="" style="width: 90px;">
@@ -131,9 +130,9 @@
                         </tr>
                     </table>
                     <table width="100%">
-                        <tr class="red-bg">
-                            <td class="row red-bg">
-                                <h3 class="text-center text-uppercase red-bg">{{ $member->member_designation->name }}</h3>
+                        <tr class="" style="background: #000">
+                            <td class="row">
+                                <h3 class="text-center text-uppercase text-white" style="color: white">{{ $member->member_designation->name }}</h3>
                             </td>
                         </tr>
                     </table>
@@ -226,8 +225,7 @@
                                 <img src="{{ asset('SRC-LATEST.jpg') }}" alt="" style="width: 90px;">
                             </td>
                             <td class="col-lg-6 text-center">
-                                <h6 style="color:#000 !important;">Zimbabwe National Youth and Paralympic Games Midlands</h6>
-                                <h6 style="color:#000 !important;">27 July- 10 August 2019</h6>
+                                <h6 style="color:#000 !important;">Zimbabwe National Youth and Paralympic Games</h6>
                             </td>
                             <td class="col-lg-3" style="overflow: hidden">
                                 <img src="{{ asset('ZNYG logo.PNG') }}" alt="" style="width: 90px;">
@@ -239,27 +237,7 @@
                             <td width="100%"><br/></td>
                         </tr>
                         
-                        <tr>
-                            <td width="100%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1"><h3>IMPORTANT NUMBERS</h3></td>
-                        </tr>
-                        <tr>
-                            <td width="95%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">CEO-0712365272  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp; Technical-0773740640</td>
-                        </tr>
-                        <tr>
-                            <td width="95%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Security-0716800173 &nbsp; &nbsp; &nbsp; Logistics-0773375471</td>
-                        </tr>
-                        <tr>
-                            <td width="95%"  style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">GM-0772770212 &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp; Operations-0773028400</td>
-                        </tr>
-                        <tr>
-                            <td width="95%" style="color:#000 !important;" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Medical-0775701614 &nbsp; &nbsp; &nbsp; Secretariat-0773747556</td>
-                        </tr>
-                      <tr>
-                            <td width="95%" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Catering-0779120743 &nbsp; &nbsp; &nbsp; Finance-0773742735</td>
-                        </tr>
-                       <tr>
-                            <td width="95%" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1">Accreditation-0772716896 &nbsp; &nbsp; &nbsp; Accommodation-0712564729</td>
-                        </tr>
+                     
                         <tr>
                             <td width="45%" style="color:#000 !important;" class="col-lg-10 col-lg-offset-1"><h3  style="color:#000 !important;">ZONE CODES</h3></td>
                         </tr>

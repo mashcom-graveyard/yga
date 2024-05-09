@@ -8,8 +8,8 @@
                     <div>
 
                         <center><img src="{{asset('SRC-LATEST.jpg')}}" width="150px"></center>
-                        <h4 class='text-center'><b>Welcome to the Youth Games Accreditation System. Enter your email and
-                                password to continue.</b></h4>
+                        <p class='text-center'><b>Welcome to the Youth Games Accreditation System. Enter your email and
+                                password to continue.</b></p>
                     </div>
                 </div>
                 <div class="card">
